@@ -1,0 +1,25 @@
+.items {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.item-name {
+    color: red;
+    font-family: "Copperplate Gothic Light", sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.item-price, .quantity {
+    color: yellow;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+}
