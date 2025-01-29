@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Append Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h2>Using jQuery .append() Method</h2>
+
+    <p id="paragraph">Virat Kohli (Hindi pronunciation: [ʋɪˈɾɑːʈ ˈkoːɦli] ⓘ; born 5 November 1988) is an Indian international cricketer who plays Test and ODI cricket for the Indian national team. A former captain in all formats of the game, Kohli retired from the T20I format following India's win at the 2024 T20 World Cup. He's a right-handed batsman and an occasional unorthodox right arm medium pace bowler. Kohli holds the highest IPL run-scorer record, ranks third in T20I, third in ODI, and stands the fourth-highest in international cricket.[4] Regarded as one of the greatest batsmen of all time, he also holds the record for scoring the most centuries in ODI cricket and is second in the list of most international centuries scored in international cricket.[5]</p>
+    <button id="appendText">Append Text</button>
+
+    <br><br>
+
+    <ol id="orderedList">
+        <li>Name:Virat Kholi</li>
+        <li>Age:36</li>
+        <li>Batting Average:48.69</li>
+    </ol>
+    <button id="appendListItem">Append List Item</button>
+
+    <script>
+        $(document).ready(function(){
+            // Append text to paragraph
+            $("#appendText").click(function(){
+                $("#paragraph").append(" Kohli was a member of the Indian team that won the 2008 Under-19 Cricket World Cup, 2011 Cricket World Cup, 2013 Champions Trophy and 2024 T20 World Cup and also captained India to win the ICC Test mace three consecutive times in 2017, 2018, and 2019.[6] He represents Royal Challengers Bengaluru in the Indian Premier League and Delhi in domestic cricket.!");
+            });
+
+            // Append a new list item to the ordered list
+            $("#appendListItem").click(function(){
+                $("#orderedList").append("<li>ID:18</li>");
+            });
+        });
+    </script>
+
+</body>
+</html>

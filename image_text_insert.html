@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Before & After Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        img {
+            display: block;
+            margin: 20px auto;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Insert Text Before and After Image using jQuery</h2>
+
+    <button id="addBefore">Insert Text Before Image</button>
+    <button id="addAfter">Insert Text After Image</button>
+
+    <br><br>
+
+    <img id="myImage" src="img5.jpg" alt="Sample Image">
+
+    <script>
+        $(document).ready(function(){
+            // Insert text before the image
+            $("#addBefore").click(function(){
+                $("#myImage").before("<p>Before: horse, (Equus caballus), a hoofed herbivorous mammal of the family Equidae. It comprises a single species, Equus caballus, whose numerous varieties are called breeds. Before the advent of mechanized vehicles, the horse was widely used as a draft animal, and riding on horseback was one of the chief means of transportation..</p>");
+            });
+
+            // Insert text after the image
+            $("#addAfter").click(function(){
+                $("#myImage").after("<p>After: The relationship of the horse to humans has been unique. The horse is a partner and friend. It has plowed fields and brought in the harvest, hauled goods and conveyed passengers, followed game and tracked cattle, and carried combatants into battle and adventurers to unknown lands. It has provided recreation in the form of jousts, tournaments, carousels, and the sport of riding. The influence of the horse is expressed in the English language in such terms as chivalry and cavalier, which connote honor, respect, good manners, and straightforwardness</p>");
+            });
+        });
+    </script>
+
+</body>
+</html>
