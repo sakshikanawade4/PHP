@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Name Checker</title>
+    <style>
+        #studentName {
+            font-size: 16px;
+            padding: 5px;
+        }
+        #studentImage {
+            width: 150px;
+            height: 150px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+    <script>
+        function checkName() {
+            let nameInput = document.getElementById("studentName");
+            if (nameInput.value.trim() !== "") {
+                nameInput.style.color = "red";
+                nameInput.style.fontSize = "18px";
+            }
+        }
+
+        function showImage() {
+            let nameInput = document.getElementById("studentName");
+            let img = document.getElementById("studentImage");
+            if (nameInput.value.trim() === "") {
+                img.style.display = "block";
+            }
+        }
+
+        function enlargeImage() {
+            let img = document.getElementById("studentImage");
+            img.style.width = "200px";
+            img.style.height = "200px";
+        }
+
+        function shrinkImage() {
+            let img = document.getElementById("studentImage");
+            img.style.width = "150px";
+            img.style.height = "150px";
+        }
+
+        function randomSizeImage() {
+            let img = document.getElementById("studentImage");
+            let randomSize = Math.floor(Math.random() * 100) + 150; // Random size between 150 and 250
+            img.style.width = randomSize + "px";
+            img.style.height = randomSize + "px";
+        }
+    </script>
+</head>
+<body onload="shrinkImage()">
+
+    <h2>Enter Student Name</h2>
+    <input type="text" id="studentName" placeholder="Enter Name"
+           onblur="checkName()" onclick="showImage()">
+    
+    <br><br>
+    
+    <img id="studentImage" src="img4.jpg" alt="Student Image"
+         onmouseover="enlargeImage()" onmouseout="shrinkImage()" onmouseup="randomSizeImage()">
+
+</body>
+</html>
