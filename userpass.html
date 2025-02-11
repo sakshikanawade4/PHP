@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Membership Form</h2>
+        <form id="membershipForm">
+            <label>Username:</label>
+            <input type="text" id="username" required>
+            <p id="usernameError" class="error"></p>
+
+            <label>Password:</label>
+            <input type="password" id="password" required>
+            <p id="passwordError" class="error"></p>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function validateCredentials(username, password) {
+            const usernameRegex = /^[a-zA-Z0-9_-]{4,8}$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!]).{8,}$/;
+
+            let usernameError = "";
+            let passwordError = "";
+
+            if (!usernameRegex.test(username)) {
+                usernameError = "Username must be 4-20 characters, only letters, numbers, _ or -.";
+            }
+
+            if (!passwordRegex.test(password)) {
+                passwordError = "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
+            }
+
+            return { valid: !usernameError && !passwordError, usernameError, passwordError };
+        }
+
+        document.getElementById("membershipForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const validation = validateCredentials(username, password);
+
+            document.getElementById("usernameError").textContent = validation.usernameError;
+            document.getElementById("passwordError").textContent = validation.passwordError;
+
+            if (validation.valid) {
+                alert("Registration Successful!");
+            }
+        });
+    </script>
+
+</body>
+</html>
