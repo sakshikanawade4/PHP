@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Book Details</title>
+    <script>
+        function fetchBookDetails() {
+            let title = document.getElementById("bookSelect").value;
+            if (title === "") {
+                document.getElementById("bookDetails").innerHTML = "Please select a book.";
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_book_details.php?title=" + encodeURIComponent(title), true);
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    let book = JSON.parse(xhr.responseText);
+                    let output = `<h3>Book Details:</h3>
+                                  <p><strong>Title:</strong> ${book.title}</p>
+                                  <p><strong>Author:</strong> ${book.author}</p>
+                                  <p><strong>Year:</strong> ${book.year}</p>
+                                  <p><strong>Price:</strong> $${book.price}</p>`;
+
+                    document.getElementById("bookDetails").innerHTML = output;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h2>Select a Book:</h2>
+    <select id="bookSelect" onchange="fetchBookDetails()">
+        <option value="">Select a Book</option>
+        <option value="The Great Gatsby">The Great Gatsby</option>
+        <option value="To Kill a Mockingbird">To Kill a Mockingbird</option>
+        <option value="1984">1984</option>
+        <option value="Moby Dick">Moby Dick</option>
+    </select>
+    <div id="bookDetails"></div>
+</body>
+</html>
