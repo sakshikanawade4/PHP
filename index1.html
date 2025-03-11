@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Contact Viewer</title>
+    <script>
+        function fetchContacts() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "fetch_contacts.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var contacts = JSON.parse(xhr.responseText);
+                    var table = "<table border='1'><tr><th>Sr No</th><th>Name</th><th>Residence Number</th><th>Mobile Number</th><th>Address</th></tr>";
+                    for (var i = 0; i < contacts.length; i++) {
+                        table += "<tr>";
+                        table += "<td>" + contacts[i].srno + "</td>";
+                        table += "<td>" + contacts[i].name + "</td>";
+                        table += "<td>" + contacts[i].residence + "</td>";
+                        table += "<td>" + contacts[i].mobile + "</td>";
+                        table += "<td>" + contacts[i].address + "</td>";
+                        table += "</tr>";
+                    }
+                    table += "</table>";
+                    document.getElementById("output").innerHTML = table;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h2>Contact Details</h2>
+    <button onclick="fetchContacts()">Print</button>
+    <br><br>
+    <div id="output"></div>
+</body>
+</html>
